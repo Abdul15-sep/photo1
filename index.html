@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css">
+<style>
+  body{
+    width:100%;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right,lightblue,white);
+    margin-top: 20px;
+    overflow: auto;
+    
+  }
+  input{
+    width: 80%;
+    height:40px;
+    border:none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: transparent;
+    margin-left: 30px;
+    margin-top: 20px;
+    font-size: 1rem;
+    color:black;
+
+  }
+  label{
+    font-size: 1rem;
+    color:white;
+    margin-left: 10px;
+
+  }
+  #text{
+    width: 80%;
+    height:40px;
+    border:none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: transparent;
+    margin-left: 30px;
+    margin-top: 20px;
+  }
+  .container{
+    
+    width:40%;
+    height:800px;
+    box-sizing: border-box;
+    box-shadow:1px solid white;
+    border-bottom: white;
+    border-top: white;
+    border-left: white;
+    border-right: white;
+    border-radius: 20px;
+    background:linear-gradient(to right,lightblue,white) ;
+    justify-content: space-between;
+    aspect-ratio: 2/4;
+  }
+   
+  #gender{
+    width: 20%;
+    height:20px;
+    border:none;
+    border-bottom: 1px solid white;
+    outline: none;
+    background: transparent;
+    margin-left: 30px;
+
+  }
+  button{
+    width: 80%;
+    height:40px;
+    box-sizing: border-box; 
+    outline: none;
+    border-radius: 5px;
+    border:1px solid white;
+    margin-top: 30px;
+    box-shadow: 1px solid black;
+    background: transparent;
+    margin-left: 30px;
+    cursor: pointer;
+    background: linear-gradient(to right,lightblue,white);
+    position: relative;
+    text-transform:uppercase;
+    
+  }
+  span{
+       position: absolute;
+       background-color:lawngreen;
+       width: 0;
+       height:100%;
+       left:0;
+       bottom: 0;
+       z-index: 1;
+       transition: 0.5s;
+       
+  }
+button:hover span{
+  width: 100%;
+}
+  h1{
+    font-size: 3rem;
+    color:black;
+    margin-left: 140px;
+  }
+  select{
+    width: 80%;
+    height:40px;
+    border:none;
+    border-bottom: 1px solid white;
+    outline: none;
+    background: transparent;
+    margin-left: 30px;
+    margin-top: 20px;
+    font-size: 1rem;
+    color:black;
+  }
+</style>
+
+<script >
+var nodemailer = require('nodemailer');
+const email=document.getElementById('email').value;
+const name=document.getElementById("name").value;
+
+const password=document.getElementById("password").value;
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'brothersa020@gmail.com',
+    pass: 'qyoy jkkm snda nqrx'
+  }
+});
+
+var mailOptions = {
+  from: 'sahithsa@gmail.com',
+  to: 'brothersa020@gmail.com',
+  subject: 'Sending Email using Node.js',
+  text:name,
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+</script>
+</head>
+
+<body >
+    <div class="container">
+        <form onsubmit="sendemail(); reset(); return false;">
+                        <br>
+            
+            <h1>LOGIN FORM</h1>
+            <input type="text" name="name" id="name" placeholder="Enter name" required>
+            
+            
+            <br>
+            <input type="email" name="email" id="email" placeholder="email" required>
+            <br>
+            
+            <br>
+            <input type="password" name="password" id="password" placeholder="password" required>
+            <br>
+            
+            <br>
+            <input type="password" name="password" id="reenter password" placeholder="reenter password" required>
+            <br>
+            
+            <br>
+            <input type="radio" name="gender" id="gender" placeholder="gender" required>
+            <label for="male">Male</label>
+            <br>
+            <input type="radio" name="gender" id="gender" placeholder="gender" required >
+            <label for="female">Female</label>
+            <br>
+            <input type="radio" name="gender" id="gender" placeholder="gender" required>
+            <label for="others">Others</label>
+            <br>
+            
+            <select name="courses" required >
+              <option value="choose">Choose</option>
+  <option value="Aids">Aids</option>
+  <option value="Cse">Cse</option>
+  <option value="Aiml">Aiml</option>
+
+            </select>
+            <br>
+            <textarea name="text" id="text" placeholder="Enter address" required></textarea>
+            <br>
+            <button><span></span>Signup</button>
+
+
+
+
+
+        </form>
+    </div>
+    
+</body>
+<style>
+
+</style>
+</html>
